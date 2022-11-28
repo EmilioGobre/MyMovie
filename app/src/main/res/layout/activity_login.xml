@@ -19,7 +19,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#8D72E1">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -53,6 +54,7 @@
                 android:background="@drawable/textcolor"
                 android:layout_height="41dp"
                 android:ems="10"
+                android:paddingStart="15dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
@@ -65,6 +67,7 @@
                 android:layout_height="41dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:paddingStart="15dp"
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Password"
