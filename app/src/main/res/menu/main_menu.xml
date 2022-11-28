@@ -15,7 +15,7 @@
             android:title="Modificar"
             app:showAsAction="never"/>
 
-        <item android:id="@+id/Delete"
+        <item android:id="@+id/delete"
             android:title="Eliminar"
             app:showAsAction="never"/>
 

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    app:cardCornerRadius="10dp"
+    android:layout_marginStart="17dp"
+    android:layout_marginEnd="17dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#8D72E1">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView_card"
+                android:layout_width="300px"
+                android:layout_height="300px"
+                android:background="@drawable/textcolor"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="2dp"/>
+            <TextView
+                android:id="@+id/txttitulo_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:ems="10"
+                android:textStyle="bold"
+                android:layout_toEndOf="@+id/imageView_card"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="5dp"
+                android:text="Titulo"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/txtpuntuacion_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txttitulo_card"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@+id/imageView_card"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Puntuacion"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/txtFecha_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/imageView_card"
+                android:layout_below="@+id/txtpuntuacion_card"
+                android:textStyle="italic"
+                android:textSize="20sp"
+                android:ems="10"
+                android:text="Fecha"
+                android:inputType="textPersonName"
+                />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
+
+</LinearLayout>

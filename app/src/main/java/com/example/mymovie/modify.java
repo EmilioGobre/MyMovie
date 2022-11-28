@@ -24,8 +24,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
-public class Home extends AppCompatActivity {
+public class modify extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     Toolbar toolbar;
@@ -33,24 +32,21 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_modify);
         toolbar = findViewById(R.id.bar);
         setSupportActionBar(toolbar);
         preferences = getSharedPreferences("login", Context.MODE_PRIVATE);
         editor = preferences.edit();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
-
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.home:
-                Intent intenthome = new Intent(Home.this, Home.class);
+                Intent intenthome = new Intent(this, Home.class);
                 startActivity(intenthome);
                 break;
             case R.id.add:
@@ -80,5 +76,4 @@ public class Home extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
