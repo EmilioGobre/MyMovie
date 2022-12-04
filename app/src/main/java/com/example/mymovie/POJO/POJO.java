@@ -1,12 +1,12 @@
-package adaptadores;
+package com.example.mymovie.POJO;
 
-public class card {
+public class POJO {
     private String title;
     private float rating;
     private String Year;
     private int image;
 
-    public card(String title, String description, int image) {
+    public POJO(String title, String description, int image) {
         this.title = title;
         this.Year = description;
         this.image = image;

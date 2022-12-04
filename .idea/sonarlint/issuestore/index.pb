@@ -9,3 +9,9 @@ F
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+c
+3app/src/main/java/com/example/mymovie/registro.java,7\b\7b728ac3e14c730d6225232495c4763ef82812e8
+a
+1app/src/main/java/com/example/mymovie/delete.java,c\6\c69035e3e31e4a346797bc4f62b20c63bec3c337
+a
+1app/src/main/java/com/example/mymovie/modify.java,8\3\83af5a851cae09f102e07c1fe9d45b7f86eaa4e3
