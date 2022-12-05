@@ -13,10 +13,6 @@ c
 3app/src/main/java/com/example/mymovie/registro.java,7\b\7b728ac3e14c730d6225232495c4763ef82812e8
 a
 1app/src/main/java/com/example/mymovie/delete.java,c\6\c69035e3e31e4a346797bc4f62b20c63bec3c337
-a
-1app/src/main/java/com/example/mymovie/modify.java,8\3\83af5a851cae09f102e07c1fe9d45b7f86eaa4e3
-^
-.app/src/main/java/com/example/mymovie/add.java,e\7\e7e3ef591b8458d4af9214c262d89d27131dd736
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 _

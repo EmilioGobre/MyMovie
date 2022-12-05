@@ -84,7 +84,7 @@ private void MostarDatos(){
                             peliculasList.add(new peliculas(
                                     pelicula.getString("name"),
                                     pelicula.getString("horario"),
-                                    pelicula.getInt("tickets_disponibles"),
+                                    pelicula.getDouble("tickets_disponibles"),
                                     pelicula.getDouble("precio"),
                                     pelicula.getString("clasificacion"),
                                     pelicula.getString("imagen")

@@ -2,10 +2,9 @@ package com.example.mymovie.modelos;
 
 public class peliculas {
     public String name,horario,clasificacion,imagen;
-    public int tickets_disponibles;
-    public double precio;
+    public double precio,tickets_disponibles;
 
-    public peliculas(String name, String horario, int tickets_disponibles,double precio, String clasificacion, String imagen) {
+    public peliculas(String name, String horario, double tickets_disponibles,double precio, String clasificacion, String imagen) {
         this.name = name;
         this.horario = horario;
         this.tickets_disponibles = tickets_disponibles;
@@ -19,7 +18,7 @@ public class peliculas {
     public String gethorario() {
         return horario;
     }
-    public int gettickets_disponibles() {
+    public double gettickets_disponibles() {
         return tickets_disponibles;
     }
     public double getprecio() {
