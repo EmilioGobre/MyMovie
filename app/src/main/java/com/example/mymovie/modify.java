@@ -20,6 +20,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.mymovie.controladores.WebService;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,6 +40,10 @@ public class modify extends AppCompatActivity {
     SharedPreferences.Editor editor;
     Toolbar toolbar;
 
+    TextView tvNombre;
+    EditText etNombreBuscar,etTickets,etHorario,etPrecio,etClasificacion;
+    Button btnBuscar,btnModificar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +52,60 @@ public class modify extends AppCompatActivity {
         setSupportActionBar(toolbar);
         preferences = getSharedPreferences("login", Context.MODE_PRIVATE);
         editor = preferences.edit();
+
+        tvNombre = findViewById(R.id.tvnombre_mod);
+        etNombreBuscar = findViewById(R.id.etnombre_mod);
+        etHorario = findViewById(R.id.ethorario_add);
+        etTickets = findViewById(R.id.etticket_mod);
+        etPrecio = findViewById(R.id.etprecio_mod);
+        etClasificacion = findViewById(R.id.etclasificacion_mod);
+        btnBuscar = findViewById(R.id.btnbuscar_mod);
+        btnModificar = findViewById(R.id.button_mod);
+
+        btnBuscar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){BuscarPeli();}
+        });
+
+        btnModificar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){ModificarPeli();}
+        });
     }
+
+    public void BuscarPeli(){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = WebService.RAIZ + WebService.BUSCARPELI+ "?name=" +etNombreBuscar.getText();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response){
+                JSONObject jsonObject = null;
+                Toast.makeText(getApplicationContext(), "Pelicula Seleccionada "+etNombreBuscar.getText(), Toast.LENGTH_LONG).show();
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        tvNombre.setText(jsonObject.getString("name"));
+                        etHorario.setText(jsonObject.getString("horario"));
+                        etTickets.setText(jsonObject.getString("tickets_disponibles"));
+                        etPrecio.setText(jsonObject.getString("precio"));
+                        etClasificacion.setText(jsonObject.getString("clasificacion"));
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), "ERROR: No se encontro la pelicula", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        },new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error){
+                Toast.makeText(getApplicationContext(), "ERROR: "+error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+        queue.add(jsonArrayRequest);
+    }
+
+
+        public void ModificarPeli(){}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);

@@ -64,13 +64,12 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:textSize="20dp"
-                android:inputType="date"
                 android:textColorHint="#9035AE"
                 android:textColor="#C147E9"
                 android:layout_margin="5dp"
                 android:hint="Fecha de salida"/>
             <EditText
-                android:id="@+id/ettickets_mod"
+                android:id="@+id/etticket_mod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -78,7 +77,6 @@
                 android:textSize="20dp"
                 android:textColorHint="#9035AE"
                 android:textColor="#C147E9"
-                android:inputType="numberDecimal"
                 android:hint="Tu calificacion"/>
             <EditText
                 android:id="@+id/etprecio_mod"
@@ -89,7 +87,6 @@
                 android:textSize="20dp"
                 android:textColorHint="#9035AE"
                 android:textColor="#C147E9"
-                android:inputType="number"
                 android:hint="Calificacion de Rotten"/>
             <EditText
                 android:id="@+id/etclasificacion_mod"
@@ -102,10 +99,10 @@
                 android:textColor="#C147E9"
                 android:hint="Clasificacion"/>
             <Button
-                android:id="@+id/button_add"
+                android:id="@+id/button_mod"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="Añadir"
+                android:text="Modificar"
                 android:backgroundTint="#810CA8"
                 android:textColor="#E5B8F4"
                 android:layout_gravity="center"

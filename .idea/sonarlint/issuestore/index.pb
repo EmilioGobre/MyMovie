@@ -15,7 +15,5 @@ a
 1app/src/main/java/com/example/mymovie/delete.java,c\6\c69035e3e31e4a346797bc4f62b20c63bec3c337
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-_
-/app/src/main/java/com/example/mymovie/info.java,2\f\2ffb5de5c567f447ae3d7a1a7d60886323be709f
 `
 0app/src/main/java/com/example/mymovie/login.java,6\7\679628512391f535298cbbb4a6df57a3985dfeff
