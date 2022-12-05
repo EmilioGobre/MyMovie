@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     tools:context=".Home"
-    android:background="#2E0249">
+    android:background="#790252">
 
 <include android:id="@+id/bar"
     layout="@layout/toolbar" />

@@ -23,7 +23,3 @@ _
 /app/src/main/java/com/example/mymovie/info.java,2\f\2ffb5de5c567f447ae3d7a1a7d60886323be709f
 `
 0app/src/main/java/com/example/mymovie/login.java,6\7\679628512391f535298cbbb4a6df57a3985dfeff
-s
-Capp/src/main/java/com/example/mymovie/controladores/WebService.java,f\e\fe4c57677bd3ca3e657902c8bd27c2e15834590d
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164

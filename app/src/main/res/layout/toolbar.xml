@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#2D033B"
+    android:background="#4C0033"
     app:title=" ">
 
     <ImageView
@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#E5B8F4"
+        android:textColor="#E80F88"
         android:text="@string/app_name"
         android:textSize="30sp"
 />

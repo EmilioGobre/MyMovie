@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#570A57"
+        android:background="#AF0171"
         android:layout_margin="5dp">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -16,8 +16,8 @@
 
             <ImageView
                 android:id="@+id/imageView_card"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="@drawable/imagecolor"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#A91079"
+                android:textColor="#FF97C1"
                 android:ems="10"
                 android:textStyle="bold"
                 android:layout_toEndOf="@+id/imageView_card"
@@ -45,28 +45,31 @@
                 android:layout_below="@+id/tvNombre_card"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:textColor="#A91079"
+                android:textColor="#FF97C1"
                 android:layout_marginBottom="5dp"
                 android:layout_toEndOf="@+id/imageView_card"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Horario"
                 android:textSize="20sp" />
+
             <TextView
-                android:id="@+id/tvClasificacion_card"
+                android:id="@+id/tvTickets_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
                 android:layout_marginTop="5dp"
-                android:textColor="#A91079"
+                android:textColor="#FF97C1"
                 android:layout_toEndOf="@+id/imageView_card"
                 android:layout_below="@+id/tvHorario_card"
                 android:textStyle="italic"
                 android:textSize="20sp"
                 android:ems="10"
-                android:text="Clasificacion"
+                android:text="Tickets"
                 android:inputType="textPersonName"
+                android:layout_marginBottom="5dp"
                 />
+
         </RelativeLayout>
 
 

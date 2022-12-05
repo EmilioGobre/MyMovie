@@ -13,4 +13,22 @@ public class peliculas {
         this.clasificacion = clasificacion;
         this.imagen = imagen;
     }
+    public String getname() {
+        return name;
+    }
+    public String gethorario() {
+        return horario;
+    }
+    public int gettickets_disponibles() {
+        return tickets_disponibles;
+    }
+    public double getprecio() {
+        return precio;
+    }
+    public String getclasificacion() {
+        return clasificacion;
+    }
+    public String getimagen() {
+        return imagen;
+    }
 }
