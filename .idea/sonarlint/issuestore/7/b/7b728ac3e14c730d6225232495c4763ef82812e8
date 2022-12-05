@@ -1,0 +1,24 @@
+
+>
+java:S1604)"(Make this anonymous inner class a lambda(Ë´á¬
+C
+java:S1604C"(Make this anonymous inner class a lambda(ğ›¦àøÿÿÿÿ
+C
+java:S1604S"(Make this anonymous inner class a lambda(´¸©”üÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¶ôÙúÿÿÿÿ
+g	java:S116"SRename this field "t_nombre" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ºˆ/
+f	java:S116"RRename this field "t_email" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ºˆ/
+k	java:S116"WRename this field "t_contrasena" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ºˆ/
+k	java:S116"VRename this field "b_registrar" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿È€Ø
+Y
+java:S1659"DDeclare "t_email" and all following declarations on a separate line.(„ºˆ/
+Q
+java:S18749"6Remove this use of "ProgressDialog"; it is deprecated.(°ÕÈøÿÿÿÿ
+Q
+java:S18749"6Remove this use of "ProgressDialog"; it is deprecated.(°ÕÈøÿÿÿÿ
+M
+java:S1874:"2Remove this use of "setMessage"; it is deprecated.(‚şë¦ÿÿÿÿÿ
+e
+java:S1874r"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(œƒƒ©ùÿÿÿÿ
+A
+java:S1172w"+Remove this unused method parameter "view".(½‹“¥
