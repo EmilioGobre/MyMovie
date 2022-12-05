@@ -15,3 +15,15 @@ a
 1app/src/main/java/com/example/mymovie/delete.java,c\6\c69035e3e31e4a346797bc4f62b20c63bec3c337
 a
 1app/src/main/java/com/example/mymovie/modify.java,8\3\83af5a851cae09f102e07c1fe9d45b7f86eaa4e3
+^
+.app/src/main/java/com/example/mymovie/add.java,e\7\e7e3ef591b8458d4af9214c262d89d27131dd736
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+_
+/app/src/main/java/com/example/mymovie/info.java,2\f\2ffb5de5c567f447ae3d7a1a7d60886323be709f
+`
+0app/src/main/java/com/example/mymovie/login.java,6\7\679628512391f535298cbbb4a6df57a3985dfeff
+s
+Capp/src/main/java/com/example/mymovie/controladores/WebService.java,f\e\fe4c57677bd3ca3e657902c8bd27c2e15834590d
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164

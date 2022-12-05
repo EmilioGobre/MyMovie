@@ -1,10 +1,10 @@
 package com.example.mymovie.POJO;
 
 public class POJO {
-    private String title;
+    private final String title;
     private float rating;
-    private String Year;
-    private int image;
+    private final String Year;
+    private final int image;
 
     public POJO(String title, String description, int image) {
         this.title = title;

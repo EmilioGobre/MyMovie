@@ -42,7 +42,6 @@ public class Home extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     Toolbar toolbar;
-    TextView tvResultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,6 @@ public class Home extends AppCompatActivity {
         setSupportActionBar(toolbar);
         preferences = getSharedPreferences("login", Context.MODE_PRIVATE);
         editor = preferences.edit();
-        tvResultado = findViewById(R.id.tvResultado);
         MostarDatos();
     }
 
@@ -62,7 +60,6 @@ public class Home extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 private void MostarDatos(){
-        tvResultado.setText("Bienvenido " + preferences.getString("email", "No hay datos"));
     RequestQueue queue = Volley.newRequestQueue(this);
     String url = WebService.RAIZ + WebService.MOSTRARPELIS;
     StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -83,10 +80,8 @@ private void MostarDatos(){
                                     obj.getString("imagen"));
                             Toast.makeText(Home.this, "Nombre de pelicula: "+peli.name, Toast.LENGTH_LONG).show();
                         }
-                        //tvResultado.setText("Response is: "+ array.length());
                     }catch (JSONException e){
                         Toast.makeText(Home.this, "ERROR: "+e.getMessage(), Toast.LENGTH_LONG).show();
-                        //e.printStackTrace();
                     }
 
                 }
@@ -94,7 +89,7 @@ private void MostarDatos(){
             }, new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            tvResultado.setText("ERROR: "+ error.getMessage());
+            Toast.makeText(Home.this, "ERROR: "+error.getMessage(), Toast.LENGTH_LONG).show();
         }
     });
     queue.add(stringRequest);
