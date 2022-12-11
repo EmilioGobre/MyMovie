@@ -17,3 +17,9 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 `
 0app/src/main/java/com/example/mymovie/login.java,6\7\679628512391f535298cbbb4a6df57a3985dfeff
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+^
+.app/src/main/java/com/example/mymovie/add.java,e\7\e7e3ef591b8458d4af9214c262d89d27131dd736
+_
+/app/src/main/java/com/example/mymovie/info.java,2\f\2ffb5de5c567f447ae3d7a1a7d60886323be709f

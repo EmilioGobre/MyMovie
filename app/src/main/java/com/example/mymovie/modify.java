@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,10 +21,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mymovie.controladores.WebService;
 
@@ -34,6 +38,8 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class modify extends AppCompatActivity {
     SharedPreferences preferences;
@@ -43,6 +49,8 @@ public class modify extends AppCompatActivity {
     TextView tvNombre;
     EditText etNombreBuscar,etTickets,etHorario,etPrecio,etClasificacion;
     Button btnBuscar,btnModificar;
+
+    String url = WebService.RAIZ + WebService.MODIFICARPELIS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +63,7 @@ public class modify extends AppCompatActivity {
 
         tvNombre = findViewById(R.id.tvnombre_mod);
         etNombreBuscar = findViewById(R.id.etnombre_mod);
-        etHorario = findViewById(R.id.ethorario_add);
+        etHorario = findViewById(R.id.ethorario_mod);
         etTickets = findViewById(R.id.etticket_mod);
         etPrecio = findViewById(R.id.etprecio_mod);
         etClasificacion = findViewById(R.id.etclasificacion_mod);
@@ -74,16 +82,15 @@ public class modify extends AppCompatActivity {
     }
 
     public void BuscarPeli(){
-        RequestQueue queue = Volley.newRequestQueue(this);
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         String url = WebService.RAIZ + WebService.BUSCARPELI+ "?name=" +etNombreBuscar.getText();
-
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response){
                 JSONObject jsonObject = null;
-                Toast.makeText(getApplicationContext(), "Pelicula Seleccionada "+etNombreBuscar.getText(), Toast.LENGTH_LONG).show();
                 for (int i = 0; i < response.length(); i++) {
                     try {
+                        Toast.makeText(getApplicationContext(), "Pelicula Seleccionada "+etNombreBuscar.getText(), Toast.LENGTH_LONG).show();
                         jsonObject = response.getJSONObject(i);
                         tvNombre.setText(jsonObject.getString("name"));
                         etHorario.setText(jsonObject.getString("horario"));
@@ -91,7 +98,7 @@ public class modify extends AppCompatActivity {
                         etPrecio.setText(jsonObject.getString("precio"));
                         etClasificacion.setText(jsonObject.getString("clasificacion"));
                     } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(), "ERROR: No se encontro la pelicula", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "ERROR: No se encontro la pelicula "+etNombreBuscar.getText(), Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -104,8 +111,43 @@ public class modify extends AppCompatActivity {
         queue.add(jsonArrayRequest);
     }
 
+        public void ModificarPeli(){
+        final ProgressDialog loading = ProgressDialog.show(this,"Modificando Registro...","Espere por favor");
 
-        public void ModificarPeli(){}
+            StringRequest stringRequest=new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            loading.dismiss();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), "Error: "+error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }){
+                @Override
+                protected Map<String,String> getParams() throws AuthFailureError{
+                    String name=tvNombre.getText().toString().trim();
+                    String horario=etHorario.getText().toString();
+                    int tickets=Integer.parseInt(etTickets.getText().toString());
+                    double precio=Double.parseDouble(etPrecio.getText().toString());
+                    String clasificacion=etClasificacion.getText().toString();
+
+                    Map<String,String> params=new Hashtable<>();
+                    params.put("name",name);
+                    params.put("horario",horario);
+                    params.put("tickets_disponibles",String.valueOf(tickets));
+                    params.put("precio",String.valueOf(precio));
+                    params.put("clasificacion",clasificacion);
+
+                    return params;
+                }
+            };
+            RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);
+        }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
