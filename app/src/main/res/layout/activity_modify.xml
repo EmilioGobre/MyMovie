@@ -107,6 +107,15 @@
                 android:textColor="#E5B8F4"
                 android:layout_gravity="center"
                 android:layout_margin="5sp"/>
+            <Button
+                android:id="@+id/button_del"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="Eliminar"
+                android:backgroundTint="#BD0040"
+                android:textColor="#E5B8F4"
+                android:layout_gravity="center"
+                android:layout_margin="5sp"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

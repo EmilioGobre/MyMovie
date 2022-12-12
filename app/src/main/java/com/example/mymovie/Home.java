@@ -123,10 +123,6 @@ private void MostarDatos(){
                 Intent intentmodify = new Intent(this, modify.class);
                 startActivity(intentmodify);
                 break;
-            case R.id.delete:
-                Intent intentdelete = new Intent(this, delete.class);
-                startActivity(intentdelete);
-                break;
             case R.id.logout:
                 editor.putString("email", "");
                 editor.putString("password", "");
@@ -136,7 +132,7 @@ private void MostarDatos(){
                 finish();
                 break;
             case R.id.info:
-                Intent intentinfo = new Intent(this, info.class);
+                Intent intentinfo = new Intent(this, Fragments.class);
                 startActivity(intentinfo);
                 break;
         }

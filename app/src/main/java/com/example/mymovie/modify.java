@@ -30,6 +30,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mymovie.controladores.WebService;
+import com.example.mymovie.controladores.adaptador_peliculas;
+import com.example.mymovie.modelos.peliculas;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +50,7 @@ public class modify extends AppCompatActivity {
 
     TextView tvNombre;
     EditText etNombreBuscar,etTickets,etHorario,etPrecio,etClasificacion;
-    Button btnBuscar,btnModificar;
+    Button btnBuscar,btnModificar,btnBorrar;
 
     String url = WebService.RAIZ + WebService.MODIFICARPELIS;
 
@@ -69,6 +71,7 @@ public class modify extends AppCompatActivity {
         etClasificacion = findViewById(R.id.etclasificacion_mod);
         btnBuscar = findViewById(R.id.btnbuscar_mod);
         btnModificar = findViewById(R.id.button_mod);
+        btnBorrar = findViewById(R.id.button_del);
 
         btnBuscar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -78,6 +81,11 @@ public class modify extends AppCompatActivity {
         btnModificar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){ModificarPeli();}
+        });
+
+        btnBorrar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){BorrarPeli();}
         });
     }
 
@@ -120,6 +128,7 @@ public class modify extends AppCompatActivity {
                         public void onResponse(String response) {
                             loading.dismiss();
                             Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                            LimpiarCampos();
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -131,7 +140,7 @@ public class modify extends AppCompatActivity {
                 protected Map<String,String> getParams() throws AuthFailureError{
                     String name=tvNombre.getText().toString().trim();
                     String horario=etHorario.getText().toString();
-                    int tickets=Integer.parseInt(etTickets.getText().toString());
+                    double tickets=Double.parseDouble(etTickets.getText().toString());
                     double precio=Double.parseDouble(etPrecio.getText().toString());
                     String clasificacion=etClasificacion.getText().toString();
 
@@ -147,6 +156,37 @@ public class modify extends AppCompatActivity {
             };
             RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(stringRequest);
+        }
+
+        public void BorrarPeli(){
+            RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+            String url = WebService.RAIZ + WebService.BORRARPELIS+ "?name=" +etNombreBuscar.getText();
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                            LimpiarCampos();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), "ERROR: "+error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }){
+                @Override
+                protected Map<String,String> getParams() throws AuthFailureError{
+                    String name=tvNombre.getText().toString().trim();
+
+
+                    Map<String,String> params=new Hashtable<>();
+                    params.put("name",name);
+
+                    return params;
+                }
+            };
+            Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
         }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -167,10 +207,6 @@ public class modify extends AppCompatActivity {
                 Intent intentmodify = new Intent(this, modify.class);
                 startActivity(intentmodify);
                 break;
-            case R.id.delete:
-                Intent intentdelete = new Intent(this, delete.class);
-                startActivity(intentdelete);
-                break;
             case R.id.logout:
                 editor.putString("email", "");
                 editor.putString("password", "");
@@ -180,10 +216,19 @@ public class modify extends AppCompatActivity {
                 finish();
                 break;
             case R.id.info:
-                Intent intentinfo = new Intent(this, info.class);
+                Intent intentinfo = new Intent(this, Fragments.class);
                 startActivity(intentinfo);
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void LimpiarCampos(){
+        etNombreBuscar.setText("");
+        tvNombre.setText("Nombre de la pelicula");
+        etHorario.setText("");
+        etTickets.setText("");
+        etPrecio.setText("");
+        etClasificacion.setText("");
     }
 }

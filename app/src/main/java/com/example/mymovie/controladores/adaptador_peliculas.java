@@ -1,10 +1,12 @@
 package com.example.mymovie.controladores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,13 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mymovie.R;
 import com.example.mymovie.modelos.peliculas;
+import com.example.mymovie.registro;
 
 import java.util.List;
 
 public class adaptador_peliculas extends RecyclerView.Adapter<adaptador_peliculas.PelisViewHolder> {
 
     private Context mCtx;
-    private List<peliculas> peliculasList;
+    public List<peliculas> peliculasList;
 
     public adaptador_peliculas(Context mCtx, List<peliculas> peliculasList) {
         this.mCtx = mCtx;
@@ -47,7 +50,6 @@ public class adaptador_peliculas extends RecyclerView.Adapter<adaptador_pelicula
         holder.tvname.setText(peli.getname());
         holder.tvhorario.setText(peli.gethorario());
         holder.tvtickets.setText(String.valueOf(peli.gettickets_disponibles()));
-
     }
 
 
@@ -60,6 +62,7 @@ public class adaptador_peliculas extends RecyclerView.Adapter<adaptador_pelicula
     public static class PelisViewHolder extends RecyclerView.ViewHolder {
         TextView tvname, tvhorario,tvtickets;
         ImageView imageView;
+        RelativeLayout relativeLayout;
 
         public PelisViewHolder(View itemView) {
             super(itemView);
@@ -69,6 +72,7 @@ public class adaptador_peliculas extends RecyclerView.Adapter<adaptador_pelicula
             tvhorario = (TextView) itemView.findViewById(R.id.tvHorario_card);
             tvtickets = (TextView) itemView.findViewById(R.id.tvTickets_card);
             imageView = (ImageView) itemView.findViewById(R.id.imageView_card);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relativeLayout);
         }
     }
 

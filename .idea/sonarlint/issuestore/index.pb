@@ -9,17 +9,11 @@ F
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
-c
-3app/src/main/java/com/example/mymovie/registro.java,7\b\7b728ac3e14c730d6225232495c4763ef82812e8
-a
-1app/src/main/java/com/example/mymovie/delete.java,c\6\c69035e3e31e4a346797bc4f62b20c63bec3c337
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-`
-0app/src/main/java/com/example/mymovie/login.java,6\7\679628512391f535298cbbb4a6df57a3985dfeff
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-^
-.app/src/main/java/com/example/mymovie/add.java,e\7\e7e3ef591b8458d4af9214c262d89d27131dd736
-_
-/app/src/main/java/com/example/mymovie/info.java,2\f\2ffb5de5c567f447ae3d7a1a7d60886323be709f
+l
+<app/src/main/java/com/example/mymovie/modelos/peliculas.java,4\f\4feedb68c67fc1ecaa9ead252db706212d5e3254
+`
+0app/src/main/java/com/example/mymovie/login.java,6\7\679628512391f535298cbbb4a6df57a3985dfeff
+c
+3app/src/main/java/com/example/mymovie/registro.java,7\b\7b728ac3e14c730d6225232495c4763ef82812e8

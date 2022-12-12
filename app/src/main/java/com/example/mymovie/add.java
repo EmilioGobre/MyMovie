@@ -20,10 +20,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +42,7 @@ import com.example.mymovie.modelos.peliculas;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -51,9 +55,11 @@ public class add extends AppCompatActivity {
     SharedPreferences.Editor editor;
     Toolbar toolbar;
 
-    EditText etNombre,etHorario,etTickets,etPrecio, etClasificacion;
+    EditText etNombre,etHorario,etTickets,etPrecio;
     ImageView ivImagen;
     Button btnGuardar,btnSeleccionar;
+    ImageButton btnFecha;
+    Spinner spClasificacion;
 
     Bitmap bitmap;
     int PICK_IMAGE_REQUEST = 1;
@@ -69,10 +75,11 @@ public class add extends AppCompatActivity {
         etHorario = findViewById(R.id.ethorario_add);
         etTickets = findViewById(R.id.ettickets_add);
         etPrecio = findViewById(R.id.etprecio_add);
-        etClasificacion = findViewById(R.id.etclasificacion_add);
+        spClasificacion = findViewById(R.id.spclasificacion_add);
         ivImagen = findViewById(R.id.Imagen_add);
         btnGuardar = findViewById(R.id.button_add);
         btnSeleccionar = findViewById(R.id.btnselect_add);
+        btnFecha = findViewById(R.id.btnfecha_add);
 
         toolbar = findViewById(R.id.bar);
         setSupportActionBar(toolbar);
@@ -89,6 +96,32 @@ public class add extends AppCompatActivity {
             @Override
             public void onClick(View view) {InsertarPelicula();}
         });
+
+        btnFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(add.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                etHorario.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+
+        String [] clasificacion = {"AA","A","B","B15","C","D"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,clasificacion);
+        spClasificacion.setAdapter(adapter);
     }
     public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -107,21 +140,23 @@ public class add extends AppCompatActivity {
             public void onResponse(String response) {
                 loading.dismiss();
                 Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+                Limpiar();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 loading.dismiss();
                 Toast.makeText(getApplicationContext(),"ERROR: "+error.getMessage(),Toast.LENGTH_LONG).show();
+                Limpiar();
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 String name = etNombre.getText().toString().trim();
                 String horario = etHorario.getText().toString().trim();
-                int tickets = Integer.parseInt(etTickets.getText().toString().trim());
+                double tickets = Double.parseDouble(etTickets.getText().toString().trim());
                 double precio = Double.parseDouble(etPrecio.getText().toString().trim());
-                String clasificacion = etClasificacion.getText().toString().trim();
+                String clasificacion = spClasificacion.getSelectedItem().toString();
                 String imagen = getStringImage(bitmap);
 
                 peliculas peli= new peliculas(name,horario,tickets,precio,clasificacion,imagen);
@@ -180,10 +215,6 @@ public class add extends AppCompatActivity {
                 Intent intentmodify = new Intent(this, modify.class);
                 startActivity(intentmodify);
                 break;
-            case R.id.delete:
-                Intent intentdelete = new Intent(this, delete.class);
-                startActivity(intentdelete);
-                break;
             case R.id.logout:
                 editor.putString("email", "");
                 editor.putString("password", "");
@@ -193,10 +224,18 @@ public class add extends AppCompatActivity {
                 finish();
                 break;
             case R.id.info:
-                Intent intentinfo = new Intent(this, info.class);
+                Intent intentinfo = new Intent(this, Fragments.class);
                 startActivity(intentinfo);
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void Limpiar(){
+        etNombre.setText("");
+        etHorario.setText("");
+        etTickets.setText("");
+        etPrecio.setText("");
+        ivImagen.setImageResource(R.drawable.no_photo);
     }
 }

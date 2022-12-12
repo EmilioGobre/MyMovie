@@ -52,17 +52,39 @@
         android:textColor="#C147E9"
         android:layout_margin="5dp"
         android:hint="Nombre de la pelicula"/>
-    <EditText
-        android:id="@+id/ethorario_add"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:textSize="20dp"
-        android:inputType="date"
-        android:textColorHint="#9035AE"
-        android:textColor="#C147E9"
-        android:layout_margin="5dp"
-        android:hint="Fecha de salida"/>
+        android:layout_marginEnd="5dp">
+
+        <EditText
+            android:id="@+id/ethorario_add"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Fecha de salida"
+            android:inputType="date"
+            android:textColor="#C147E9"
+            android:textColorHint="#9035AE"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/btnfecha_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginVertical="3dp"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="#000000FF"
+            android:src="@drawable/monthly_calendar_svgrepo_com"
+            app:tint="#2D033B" />
+    </RelativeLayout>
+
     <EditText
         android:id="@+id/ettickets_add"
         android:layout_width="match_parent"
@@ -85,10 +107,10 @@
         android:textColor="#C147E9"
         android:inputType="number"
         android:hint="Calificacion de Rotten"/>
-    <EditText
-        android:id="@+id/etclasificacion_add"
+    <Spinner
+        android:id="@+id/spclasificacion_add"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:ems="10"
         android:textSize="20dp"
         android:layout_margin="5dp"

@@ -6,4 +6,5 @@ public class WebService {
     public static final String BUSCARPELI = "buscarpeli.php";
     public static final String INSETARPELIS = "insertar_pelis.php";
     public static final String MODIFICARPELIS = "update_pelis.php";
+    public static final String BORRARPELIS = "delete_pelis.php";
 }
